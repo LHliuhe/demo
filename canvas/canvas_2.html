@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas绘制弧和圆形</title>
+</head>
+<body>
+	<canvas id="canvas" style="display:block;margin:0 auto;border:1px solid #999">
+		此浏览器不支持canvas，请更换浏览器试试
+	</canvas>
+
+	<script type="text/javascript">
+		window.onload = function () {
+			var canvas = document.getElementById('canvas');
+
+			canvas.width = 1024;
+			canvas.height = 764;
+
+			var context = canvas.getContext('2d');
+			for(var i=0;i<10;i++){
+				context.beginPath();
+				context.arc(50+(i*100),100,40,0,2*Math.PI*(i+1)/10);
+				context.stroke();
+			}
+			
+			
+			
+		}
+	</script>
+</body>
+</html>
