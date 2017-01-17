@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    	body,div,ul,li{margin:0;padding:0;}
+    	#div1{width:640px;overflow: hidden;margin:40px auto;position: relative;}
+        #ul1{width:640px;height:396px;overflow: hidden;}
+        #ul1 li{width:640px;height:396px;position: absolute;list-style: none;overflow: hidden;}
+		#ul2{width:960px;}
+        #ul2 li{width:152px;height:152px;float:left;list-style: none;margin:4px;overflow:hidden;background:#333;opacity: 0.4;filter: alpha(opacity=40);}
+        .left{background:url(images/left.jpg);position: absolute;width:40px;height:40px;top:168px;z-index:100;background-size: 40px 40px;opacity: 0;}
+        .right{background:url(images/right.jpg);position: absolute;width:40px;height:40px;top:168px;right:0;background-size: 40px 40px;z-index:100;opacity: 0;}
+        .mask_left{height:396px;background:#999;width:320px;position: absolute;left:0;z-index:99;opacity: 0;}
+        .mask_right{height:396px;background:#999;width:320px;position: absolute;right:0;z-index:99;opacity: 0;}
+    </style>
+   	<script type="text/javascript" src = "js/startMove.js"></script>
+    <script type="text/javascript">
+    	window.onload = function() {
+    		var oUl = document.getElementById('ul1');
+    		var oLeft = document.getElementsByClassName('left')[0];
+    		var oRight = document.getElementsByClassName('right')[0];
+    		var oMask_left = document.getElementsByClassName('mask_left')[0];
+    		var oMask_right = document.getElementsByClassName('mask_right')[0];
+
+    		oLeft.onmouseover = oMask_left.onmouseover = function () {
+    			startMove(oLeft,'opacity',100)
+    		}
+    		oMask_left.onmouseout = function () {
+    			startMove(oLeft,'opacity',0)
+    		}
+    		oRight.onmouseover = oMask_right.onmouseover = function () {
+    			startMove(oRight,'opacity',100)
+    		}
+    		oMask_right.onmouseout = function () {
+    			startMove(oRight,'opacity',0)
+    		}
+    		var aLi1 = oUl.getElementsByTagName('li');
+    		var oUl2 = document.getElementById('ul2');
+    		var aLi2 = oUl2.getElementsByTagName('li');
+    		var nowIndex = 2;
+    		var current = 0;
+    		for(var i=0;i<aLi2.length;i++) {
+    			aLi2[i].index = i;
+    			aLi2[i].onclick = function () {
+    				if(this.index != current){
+    					current = this.index;
+    					aLi1[this.index].style.zIndex = nowIndex++;
+    					aLi1[this.index].style.height = 0;
+    					startMove(aLi1[this.index],'height',396);
+    					for(var j=0;j<aLi2.length;j++){
+    						startMove(aLi2[j],'opacity',40)
+    					}
+    					startMove(this,'opacity',100);
+    				}
+    			}
+    			 aLi2[i].onmouseover = function(){
+    			 	startMove(this,'opacity',100)
+    			 }
+    			 aLi2[i].onmouseout = function(){
+    			 	if(this.index == current){
+    					startMove(this,'opacity',100);
+    			 	}else{
+    			 		startMove(this,'opacity',40);
+    			 	}	
+    			}		
+    		}
+    		oRight.onclick = function () {
+    			
+    		}
+    	}
+    	
+    </script>
+</head>
+<body>
+<div id="div1">
+	<div class="left"></div>
+	<div class="right"></div>
+	<div class="mask_left"></div>
+	<div class="mask_right"></div>
+    <ul id="ul1">
+        <li style="z-index:1;"><img src="images/1.jpg" alt=""></li>
+        <li><img src="images/2.jpg" alt=""></li>
+        <li><img src="images/3.jpg" alt=""></li>
+        <li><img src="images/4.jpg" alt=""></li>
+        <li><img src="images/5.jpg" alt=""></li>
+        <li><img src="images/6.jpg" alt=""></li>
+    </ul>
+    <ul id="ul2">
+        <li style="opacity:1;"><img src="images/1.jpg" alt=""></li>
+        <li><img src="images/2.jpg" alt=""></li>
+        <li><img src="images/3.jpg" alt=""></li>
+        <li><img src="images/4.jpg" alt=""></li>
+        <li><img src="images/5.jpg" alt=""></li>
+        <li><img src="images/6.jpg" alt=""></li>
+    </ul>
+</div>
+</body>
+</html>

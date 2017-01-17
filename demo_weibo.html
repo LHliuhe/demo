@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<style>
+		body,div,ul,li,textarea,input{margin:0;padding:0;}
+		#ul1{width:400px;height:400px;margin:10px auto;border:1px solid #666;}
+		#ul1 li{border-bottom:1px dashed #999;padding:4px;list-style: none;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function () {
+			var oTxt = document.getElementById('txt1');
+			var oBtn = document.getElementById('btn1');
+			var oUl = document.getElementById('ul1');
+
+			oBtn.onclick = function () {
+				var oLi = document.createElement('li');
+				oLi.innerHTML = oTxt.value;
+				oTxt.value = '';
+				if(oUl.children.length>0){
+					oUl.insertBefore(oLi,oUl.children[0]);
+				}else{
+					oUl.appendChild(oLi);
+				}
+				//oUl.insertBefore(oLi,oUl.children[0]);
+				var iHeight = oLi.offsetHeight;
+				alert(iHeight);
+			}
+		}
+	</script>
+</head>
+<body>
+	<textarea name="" id="txt1" cols="30" rows="4"></textarea>
+	<input type="button" id="btn1" value="发布">
+	<ul id="ul1">
+		<!-- <li>ddsddd</li> -->
+	</ul>
+</body>
+</html>
