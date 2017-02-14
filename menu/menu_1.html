@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS:二级菜单显示和隐藏</title>
+	<style type="text/css">
+		body{font-family:"Microsoft YaHei";}
+		body,div,ul,li,a{margin:0;padding:0;}
+		#div1{background-color:#eee;width:600px;height:40px;margin:auto;}
+		#div1 ul{list-style: none;}
+		#div1 ul li{float:left;line-height: 40px;text-align: center;position: relative;}
+		#div1 a{text-decoration:none;color:#333;display: block;padding:0 10px;height:40px;}
+		#div1 a:hover{background-color:#666;color:#fff;}
+		#div1 ul li ul{position: absolute;display: none;top:40px;left:0;}
+		#div1 ul li ul li{float:none;background-color:#eee;margin-top:2px;color:#333;}
+		#div1 ul li ul li a{width:80px;}
+		#div1 ul li ul li a:hover{background-color:#06f;}
+		#div1 ul li:hover > ul{display: block;}
+		#div1 ul li ul li ul li{line-height: 40px;float:none;background-color:#eee;margin-top:2px;color:#333;}
+		#div1 ul li ul li ul{display: none;position:absolute;top:-2px;left:100px;list-style: none;}
+		#div1 ul li ul li:hover ul{display: block;}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<ul>
+			<li>
+				<a href="">首页</a>
+			</li>
+			<li>
+				<a href="">课程大厅</a>
+				<ul>
+					<li><a href="">JavaScript</a></li>
+					<li><a href="">HTML/CSS</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="">学习中心</a>
+				<ul>
+					<li>
+						<a href="">视频学习</a>
+						<ul>
+							<li><a href="">实例练习</a></li>
+							<li><a href="">问与答</a></li>
+						</ul>
+					</li>
+					<li><a href="">实例练习</a></li>
+					<li><a href="">问与答</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="">经典案例</a>
+			</li>
+			<li>
+				<a href="">关于我们</a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

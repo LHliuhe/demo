@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件基础1</title>
+	<style>	
+		div{width:10px;height:10px;background:red;position: absolute;}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<script type="text/javascript">
+		window.onload = function () {
+			function getPos(eve) {
+				var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+				var scrollLeft = document.documentElement.scrollLeft || document.body.scrollLeft;
+				return {x:eve.clientX + scrollLeft,y:eve.clientY + scrollTop}
+			}
+			document.onmousemove = function (eve) {
+				var oEvent = eve || event;
+				var pos = getPos(oEvent);
+				var aDiv = document.getElementsByTagName('div');
+				for(let i=aDiv.length-1;i>0;i--){
+					aDiv[i].style.left = aDiv[i-1].offsetLeft + 'px';
+					aDiv[i].style.top = aDiv[i-1].offsetTop + 'px';
+				}
+				
+				aDiv[0].style.left = pos.x + 'px';
+				aDiv[0].style.top = pos.y + 'px';
+			}
+		}
+	</script>
+</body>
+</html>

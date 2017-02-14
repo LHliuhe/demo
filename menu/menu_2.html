@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JS:二级菜单显示和隐藏</title>
+	<style type="text/css">
+		body{font-family:"Microsoft YaHei";}
+		body,div,ul,li,a{margin:0;padding:0;}
+		#div1{background-color:#eee;width:600px;height:40px;margin:auto;}
+		ul{list-style: none;}
+		ul li{float:left;line-height: 40px;text-align: center;position: relative;}
+		a{text-decoration:none;color:#333;display: block;padding:0 10px;height:40px;}
+		a:hover{background-color:#666;color:#fff;}
+		ul li ul{position: absolute;top:40px;left:0;display: none;}
+		ul li ul li{float:none;background-color:#eee;margin-top:2px;color:#333;}
+		ul li ul li a{width:80px;}
+		ul li ul li a:hover{background-color:#06f;}
+	</style>
+</head>
+<body>
+	<div id="div1">
+		<ul>
+			<li>
+				<a href="">首页</a>
+			</li>
+			<li class="menu" onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+				<a href="">课程大厅</a>
+				<ul>
+					<li><a href="">JavaScript</a></li>
+					<li><a href="">jQuery</a></li>
+					<li><a href="">视频学习</a></li>
+					<li><a href="">实例练习</a></li>
+					<li><a href="">问与答</a></li>
+				</ul>
+			</li>
+			<li class="menu" onmouseover="showMenu(this)" onmouseout="hideMenu(this)">
+				<a href="">学习中心</a>
+				<ul>
+					<li><a href="">视频学习</a></li>
+					<li><a href="">实例练习</a></li>
+					<li><a href="">问与答</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="">经典案例</a>
+			</li>
+			<li>
+				<a href="">关于我们</a>
+			</li>
+		</ul>
+	</div>
+	<script src="js/jquery.min.js"></script>
+	<script type="text/javascript">					//jQuery方法实现
+		$(document).ready(function(){
+			$('.menu').mouseover(function(){
+				$(this).children('ul').show();
+			})
+			$('.menu').mouseout(function(){
+				$(this).children('ul').hide();
+			})
+		});
+	</script> 
+	<!-- <script type="text/javascript">			//JavaScript方法实现
+		function hideMenu(li){
+			var hm = li.getElementsByTagName('ul')[0];
+			hm.style.display = 'none';
+		}
+		function showMenu(li){
+			var hm = li.getElementsByTagName('ul')[0];
+			hm.style.display = 'block';
+		}
+	</script> -->
+</body>
+</html>

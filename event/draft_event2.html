@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>鼠标拖拽事件2</title>
+	<style type="text/css">
+		#div1{width:100px;height:100px;background:red;position: absolute;}
+		.box{border:1px dashed #999;position: absolute;}
+	</style>
+</head>
+<body>
+
+	<div id="div1"></div>
+<script type="text/javascript">
+	window.onload = function () {
+		var oDiv1 = document.getElementById('div1');
+		var disY= 0;
+		var disX= 0;
+		oDiv1.onmousedown = function (eve) {
+			var oEvent = eve || event;
+
+			disX = oEvent.clientX - oDiv1.offsetLeft;
+			disY = oEvent.clientY - oDiv1.offsetTop;
+
+			var oBox = document.createElement('div');
+			oBox.className = 'box';
+			oBox.style.width = oDiv1.offsetWidth + 'px';
+			oBox.style.height = oDiv1.offsetHeight + 'px';
+			document.body.appendChild(oBox);
+
+			document.onmousemove = function (eve) {
+				var oEvent = eve || event;
+				var l = oEvent.clientX - disX;
+				var t = oEvent.clientY - disY;
+				oBox.style.left = l + 'px';
+				oBox.style.top = t + 'px';
+			}
+			document.onmouseup = function () {
+				oDiv1.style.left = oBox.style.left;
+				oDiv1.style.top = oBox.style.top;
+				oBox.className = '';
+				document.onmousemove = null;
+				document.onmouseup = null;
+			}	
+		}
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<!-- 	<script type="text/javascript">
+	document.onclick = function(m){
+		alert(event.x+','+event.y+event.clientX+','+event.clientY+event.offsetX+','+event.offsetY+event.screenX+','+event.screenY)
+	}
+</script>
+ -->
+	<!-- event事件不兼容在IE8以下 的浏览器，需要进行兼容性处理-->
+
+	<script type="text/javascript">
+		document.onclick = function(eve){
+			var oEvent = eve||event;
+			alert(oEvent.x+','+oEvent.y+'；'+oEvent.clientX+','+oEvent.clientY+'；'+oEvent.offsetX+','+oEvent.offsetY+'；'+oEvent.screenX+','+oEvent.screenY)
+		}
+	</script> 
+</body>
+</html>
